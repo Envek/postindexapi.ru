@@ -1,0 +1,23 @@
+!!!
+
+%html{lang: :ru}
+  %head
+    %meta{charset: 'utf-8'}
+    %title API-доступ к почтовым индексам России.
+    %link{rel: 'stylesheet', href: '/stylesheet.css'}
+    %link{rel: 'icon', type: 'image/png', href: '/favicon.png'}
+    %script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'}
+  %body
+    #wrap_outer
+      #wrap_inner
+        %header
+          %h1 <a href="#{to '/'}">Почтовые индексы Российской Федерации <span>в машиночитаемом виде.</span></a>
+        %section#main
+          = yield
+    #footer_wrap
+      %footer
+        .about
+          %p База данных взята у <a href="http://info.russianpost.ru/database/ops.html">ФГУП Почта России</a>. Все права (и обязанности) на данную информацию принадлежат им.
+        .feedback
+          %p Разработка: <a href="http://envek.name/ru/">Новиков Андрей</a>.
+          %p Идеи, предложения, пожелания, претензии, благодарности и прочее просьба писать на адрес <a href="mailto:envek+postindexapi.ru@envek.name">envek+postindexapi.ru@envek.name</a>

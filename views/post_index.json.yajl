@@ -1,0 +1,13 @@
+json = {
+  index:    @index.index,
+  region:   @index.region,
+  area:     @index.area,
+  city:     @index.city,
+  ops_name: @index.ops_name,
+  ops_type: @index.ops_type,
+  ops_subm: @index.ops_subm,
+  autonom:  @index.autonom,
+  city_1:   @index.city_1,
+  act_date: @index.act_date,
+  index_old:@index.index_old
+}

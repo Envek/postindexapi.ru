@@ -1,0 +1,43 @@
+%h2 Основная информация
+%dl
+  %dt Индекс
+  %dd= @index.index
+  %dt Регион
+  %dd= @index.region
+  - if @index.autonom.present?
+    %dt Автономная область
+    %dd= @index.autonom
+  - if @index.area.present?
+    %dt Район
+    %dd= @index.area
+  - if @index.city.present?
+    %dt Город/село
+    %dd= @index.city
+  - if @index.city_1.present?
+    %dt (Микро)район
+    %dd= @index.city_1
+  - if @index.index_old.present? and @index.index_old != @index.index
+    %dt Старый индекс
+    %dd= @index.index_old
+
+%h2 Объект почтовой связи (почтовое отделение)
+%dl
+  - if @index.ops_name.present?
+    %dt Наименование
+    %dd= @index.ops_name
+  - if @index.ops_type.present?
+    %dt Тип
+    %dd= @index.ops_type
+  - if @index.ops_subm.present?
+    %dt Индекс вышестоящего объекта
+    %dd <a href="#{to "/#{@index.ops_subm}"}">#{@index.ops_subm}</a>
+
+%h2 Машиночитаемые форматы:
+%ol
+  %li JSON: <a href="#{to(request.url)}.json">#{to(request.url)}.json</a>
+
+- if @index.subordinates.any?
+  %h2 Подчинённые объекты почтовой связи
+  %ul
+    - @index.subordinates.each do |sub|
+      %li <a href="#{to("/#{sub.index}")}">#{sub}</a>
