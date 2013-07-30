@@ -17,6 +17,8 @@ gem 'sass'
 gem 'coffee-script'
 gem 'therubyracer'
 
+gem 'nokogiri', require: false
+
 group :development do
   gem 'debugger'
   gem 'shotgun'
