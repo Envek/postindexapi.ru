@@ -1,0 +1,7 @@
+%h2= params[:area]
+
+- if @cities.any?
+  %h3 Города/посёлки
+  %ul
+    - @cities.each do |city|
+      %li <a href="#{to("/#{[params[:region], params[:autonom], params[:area], city].compact.join('/')}")}">#{city}</a>

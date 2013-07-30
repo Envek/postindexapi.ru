@@ -1,0 +1,25 @@
+%h2= params[:region]
+
+- if @autonoms.any?
+  %h3 Автономные области
+  %ul
+    - @autonoms.each do |autonom|
+      %li <a href="#{to("/#{params[:region]}/#{autonom}")}">#{autonom}</a>
+
+- if @cities.any?
+  %h3 Города/посёлки регионального подчинения
+  %ul
+    - @cities.each do |city|
+      %li <a href="#{to("/#{params[:region]}/#{city}")}">#{city}</a>
+
+- if @areas.any?
+  %h3 Районы
+  %ul
+    - @areas.each do |area|
+      %li <a href="#{to("/#{params[:region]}/#{area}")}">#{area}</a>
+
+- if @indices.any?
+  %h3 Объекты почтовой связи (почтовые отделения)
+  %ul
+    - @indices.each do |index|
+      %li <a href="#{to("/#{index.index}")}">#{index}</a>

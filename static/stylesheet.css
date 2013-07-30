@@ -36,14 +36,15 @@ img {
   height: 100%; }
 
 #wrap_inner {
-  padding-bottom: 76px; }
+  padding: 1em 20em 100px 2em;
+  overflow: hidden; }
 
 header {
   background: #0c426f;
   color: white;
   border-bottom: 1px solid #09355a;
   padding: 1em 10%;
-  margin: 0; }
+  margin: -1em -20em 1em -2em; }
   header h1 span {
     display: block;
     font-size: 75%; }
@@ -88,7 +89,21 @@ header {
       border-left: 1px solid #1b5280; }
 
 section#main {
-  margin: 1em 10%; }
+  width: 100%;
+  float: left; }
+
+menu#regions {
+  width: 15em;
+  margin-right: -18em;
+  margin-top: 0;
+  float: right; }
+  menu#regions li {
+    font-size: 80%; }
+  menu#regions h2 {
+    margin-top: 0; }
+
+.breadcrumbs {
+    font-size: 80%; }
 
 #footer_wrap {
   background: #083158;

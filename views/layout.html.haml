@@ -13,7 +13,12 @@
         %header
           %h1 <a href="#{to '/'}">Почтовые индексы Российской Федерации <span>в машиночитаемом виде.</span></a>
         %section#main
+          %nav.breadcrumbs= breadcrumbs
           = yield
+        %menu#regions
+          %h2 По регионам
+          - PostIndex.reorder(:region).pluck(:region).uniq.reject{|r| r.empty?}.each do |region|
+            %li <a href="#{to "/#{region}"}">#{region}</a>
     #footer_wrap
       %footer
         .about

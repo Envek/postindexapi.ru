@@ -1,0 +1,15 @@
+
+
+%h2= params[:autonom]
+
+- if @cities.any?
+  %h3 Города/посёлки регионального подчинения
+  %ul
+    - @cities.each do |city|
+      %li <a href="#{to("/#{[params[:region], params[:autonom], city].compact.join('/')}")}">#{city}</a>
+
+- if @areas.any?
+  %h3 Районы
+  %ul
+    - @areas.each do |area|
+      %li <a href="#{to("/#{[params[:region], params[:autonom], area].compact.join('/')}")}">#{area}</a>

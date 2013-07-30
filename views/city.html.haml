@@ -1,0 +1,4 @@
+%h3 #{@indices.first.city}: Объекты почтовой связи (почтовые отделения)
+%ul
+  - @indices.each do |index|
+    %li <a href="#{to("/#{index.index}")}">#{index}</a>
