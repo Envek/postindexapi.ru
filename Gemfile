@@ -23,4 +23,6 @@ group :development do
   gem 'debugger'
   gem 'shotgun'
   gem 'tux'
+  gem 'capistrano'
+  gem 'rvm-capistrano'
 end
