@@ -3,6 +3,7 @@ require 'sinatra/activerecord'
 require 'sinatra/respond_to'
 require 'yajl/json_gem'
 Sinatra::Application.register Sinatra::RespondTo
+use Rack::GoogleAnalytics, tracker: 'UA-35766527-2' if settings.environment == :production
 set :haml, :format => :html5
 set :public_folder, File.dirname(__FILE__) + '/static'
 set :database_file, 'config/database.yml'

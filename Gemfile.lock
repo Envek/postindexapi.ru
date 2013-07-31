@@ -60,6 +60,7 @@ GEM
     puma (2.3.2)
       rack (>= 1.1, < 2.0)
     rack (1.5.2)
+    rack-google-analytics (0.11.0)
     rack-protection (1.5.0)
       rack
     rack-test (0.6.2)
@@ -114,6 +115,7 @@ DEPENDENCIES
   nokogiri
   pg
   puma
+  rack-google-analytics
   rake
   rvm-capistrano
   sass

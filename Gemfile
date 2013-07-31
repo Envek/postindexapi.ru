@@ -18,6 +18,7 @@ gem 'coffee-script'
 gem 'therubyracer'
 
 gem 'nokogiri', require: false
+gem 'rack-google-analytics'
 
 group :development do
   gem 'debugger'
