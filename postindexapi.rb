@@ -37,7 +37,10 @@ get '/' do
 end
 
 not_found do
-  haml "%h1 Ничего не найдено\n%p Возможно вы опечатались в адресе…"
+  respond_to do |format|
+    format.html { haml "%h1 Ничего не найдено\n%p Возможно вы опечатались в адресе…" }
+    format.json { yajl "json = { error_message: 'Запрошенный вами ресурс не существует'}" }
+  end
 end
 
 # Browsing part
