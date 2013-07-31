@@ -7,6 +7,7 @@ use Rack::GoogleAnalytics, tracker: 'UA-35766527-2' if settings.environment == :
 set :haml, :format => :html5
 set :public_folder, File.dirname(__FILE__) + '/static'
 set :database_file, 'config/database.yml'
+set :protection, :except => [:remote_referrer, :json_csrf]
 
 class PostIndex < ActiveRecord::Base
   self.primary_key = 'index'
