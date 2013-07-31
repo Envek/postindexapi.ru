@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
         !$('.region_field', postcode_field.parents("form")).val().length) {
       jQuery.ajax({ 
         dataType: "jsonp",
-        url: '/'+postcode+'.json?callback=?',
+        url: 'http://postindexapi.ru/'+postcode+'.json?callback=?',
         success: function(data){
           postcode_field.val(data.index);
           $('#address_region').val(data.region);
