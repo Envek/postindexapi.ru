@@ -1,9 +1,11 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/respond_to'
+require 'sinatra/cookies'
+require 'securerandom'
 require 'yajl/json_gem'
 Sinatra::Application.register Sinatra::RespondTo
-use Rack::GoogleAnalytics, tracker: 'UA-35766527-2' if settings.environment == :production
+set :app, HashWithIndifferentAccess.new(YAML.load_file('config/settings.yml'))
 set :haml, :format => :html5
 set :public_folder, File.dirname(__FILE__) + '/static'
 set :database_file, 'config/database.yml'
@@ -17,19 +19,30 @@ class PostIndex < ActiveRecord::Base
   def to_s; "#{self.index} — #{self.ops_name}" end
 end
 
+use Rack::GoogleAnalytics, tracker: settings.app[:google_analytics][:id] if settings.production?
+require './lib/google_analytics'
+
+before do
+  cookies[:postindex_client_uuid] ||= SecureRandom.uuid
+end
+
 get %r{/(\d{6})} do |index|
   @index = PostIndex.where(index: index).first
   @index = PostIndex.where(index_old: index).order(:index).first unless @index
   raise Sinatra::NotFound unless @index
-  last_modified @index.act_date
   respond_to do |format|
-    format.html { haml :post_index }
-    format.json {
+    format.html do
+      last_modified @index.act_date
+      haml :post_index
+    end
+    format.json do
+      AnalyticsJob.new.async.perform(settings.app[:google_analytics][:id], request, cookies[:postindex_client_uuid], Time.now)
       headers \
         'Access-Control-Allow-Origin' => '*',
         'Access-Control-Allow-Methods' => 'GET'
+      last_modified @index.act_date
       yajl :post_index, callback: params[:callback]
-    }
+    end
   end
 end
 

@@ -21,9 +21,11 @@ require 'bundler/capistrano'
 # Автосоздание конфигов при необходимости
 after 'deploy:update_code', :roles => :app do
   run "test -d #{deploy_to}/shared/config || mkdir #{deploy_to}/shared/config"
-  run "test -f #{deploy_to}/shared/config/database.yml || cp #{current_release}/config/database.yml.example #{deploy_to}/shared/config/database.yml"
-  run "rm -f #{current_release}/config/database.yml"
-  run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
+  %w(database settings).each do |filename|
+    run "test -f #{deploy_to}/shared/config/#{filename}.yml || cp #{current_release}/config/#{filename}.yml.example #{deploy_to}/shared/config/#{filename}.yml"
+    run "rm -f #{current_release}/config/#{filename}.yml"
+    run "ln -s #{deploy_to}/shared/config/#{filename}.yml #{current_release}/config/#{filename}.yml"
+  end
 end
 
 require 'puma/capistrano'

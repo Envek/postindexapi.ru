@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'sinatra', '~> 1.4'
-gem 'sinatra-respond_to' 
+gem 'sinatra-respond_to'
+gem 'sinatra-contrib'
 gem 'rake'
 gem 'puma'
 
@@ -19,6 +20,8 @@ gem 'therubyracer'
 
 gem 'nokogiri', require: false
 gem 'rack-google-analytics'
+gem 'sucker_punch', '~> 1.0'
+gem 'rest-client'
 
 group :development do
   gem 'debugger'
