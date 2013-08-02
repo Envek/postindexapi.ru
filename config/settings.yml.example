@@ -1,2 +1,6 @@
 google_analytics:
   id: UA-35766527-2
+
+google_adsense:
+  client_id: ca-pub-8719910245442223
+  slot: 4805107393

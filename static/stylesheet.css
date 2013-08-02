@@ -184,3 +184,10 @@ pre.code {
     background: #FAFAFA;
     overflow-x: scroll;
 }
+
+/* Google adsense banner */
+.google_adsense { clear: left; }
+.google_adsense .postindexapi-main { width: 320px; height: 50px;}
+@media(min-width: 500px) { .google_adsense .postindexapi-main { width: 468px; height: 60px; } }
+@media(min-width: 1000px) { .google_adsense .postindexapi-main { width: 728px; height: 90px; } }
+@media(min-width: 1250px) { .google_adsense .postindexapi-main { width: 970px; height: 90px; } }

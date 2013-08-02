@@ -20,6 +20,7 @@
           %h2 По регионам
           - PostIndex.reorder(:region).pluck(:region).uniq.reject{|r| r.empty?}.each do |region|
             %li <a href="#{to "/#{region}"}">#{region}</a>
+        .google_adsense= erb :adsense if settings.production?
     #footer_wrap
       %footer
         .about
