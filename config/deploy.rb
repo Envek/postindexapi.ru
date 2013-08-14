@@ -18,6 +18,9 @@ set :use_sudo, false
 require 'rvm/capistrano'
 require 'bundler/capistrano'
 
+set :whenever_command, 'bundle exec whenever'
+require 'whenever/capistrano'
+
 # Автосоздание конфигов при необходимости
 after 'deploy:update_code', :roles => :app do
   run "test -d #{deploy_to}/shared/config || mkdir #{deploy_to}/shared/config"

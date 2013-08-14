@@ -22,6 +22,7 @@ gem 'nokogiri', require: false
 gem 'rack-google-analytics'
 gem 'sucker_punch', '~> 1.0'
 gem 'rest-client'
+gem 'whenever', :require => false
 
 group :development do
   gem 'debugger'
