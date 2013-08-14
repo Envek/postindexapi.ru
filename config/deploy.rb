@@ -32,3 +32,5 @@ after 'deploy:update_code', :roles => :app do
 end
 
 require 'puma/capistrano'
+
+shared_children.push('tmp/post_indices')

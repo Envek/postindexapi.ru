@@ -21,4 +21,8 @@ if environment == 'production'
     command "PID=`grep pid #{puma_statefile} | awk '{print $2}'`; if [ ! -f #{puma_statefile} ] || [ ! -e /proc/$PID ]; then kill $PID; rvm use #{ruby} && cd #{current} && bundle exec #{puma_start_command}; fi"
   end
 
+  every 1.day do
+    rake 'post_index:update'
+  end
+
 end
