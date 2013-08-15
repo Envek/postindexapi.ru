@@ -4,10 +4,12 @@ jQuery(document).ready(function($){
     var postcode_field = $(this);
     var form = postcode_field.parents("form");
     var region_field = $('.region_field', form);
+    var autonom_field= $('.autonom_field', form);
     var area_field   = $('.area_field', form);
     var city_field   = $('.city_field', form);
     // Очистим все поля
     region_field.val('');
+    autonom_field.val('');
     area_field.val('');
     city_field.val('');
     // Если индекс введён полностью - загрузим информацию о нём
@@ -23,6 +25,7 @@ jQuery(document).ready(function($){
         success: function(data){
           postcode_field.val(data.index);
           region_field.val(data.region);
+          autonom_field.val(data.autonom);
           area_field.val(data.area);
           city_field.val(data.city);
           if (data.index != postcode) {

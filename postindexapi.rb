@@ -58,25 +58,26 @@ not_found do
 end
 
 # Browsing part
+region_autonom_sql = "post_indices.region = ? AND post_indices.autonom = '' OR post_indices.region = '' AND post_indices.autonom = ?"
 
 get '/:region' do
-  stub = PostIndex.where(region: params[:region])
-  @cities   = stub.where(autonom: '', area: '').where.not(city: '').reorder(:city).uniq.pluck(:city)
-  @areas    = stub.where(autonom: '').where.not(area: '').reorder(:area).uniq.pluck(:area)
-  @autonoms = stub.where(area: '').where.not(autonom: '').reorder(:autonom).uniq.pluck(:autonom)
+  stub = PostIndex.where(region_autonom_sql, params[:region], params[:region])
+  @cities   = stub.where(area: '').where.not(city: '').reorder(:city).uniq.pluck(:city)
+  @areas    = stub.where.not(area: '').reorder(:area).uniq.pluck(:area)
+  @autonoms = PostIndex.where(area: '', region: params[:region]).where.not(autonom: '').reorder(:autonom).uniq.pluck(:autonom)
   @indices = PostIndex.where(region: params[:region], autonom: '', area: '', city: '')
   raise Sinatra::NotFound unless @cities.any? or @areas.any? or @autonoms.any? or @indices.any?
   haml :region
 end
 
 get '/:region/:city' do
-  @indices = PostIndex.where(region: params[:region], city: params[:city])
+  @indices = PostIndex.where(region_autonom_sql, params[:region], params[:region]).where(city: params[:city])
   pass unless @indices.any?
   haml :city
 end
 
 get '/:region/:area' do
-  @cities = PostIndex.where(region: params[:region], area: params[:area]).reorder(:city).uniq.pluck(:city)
+  @cities = PostIndex.where(region_autonom_sql, params[:region], params[:region]).where(area: params[:area]).reorder(:city).uniq.pluck(:city)
   pass unless @cities.any?
   haml :area
 end
@@ -90,7 +91,7 @@ end
 
 
 get '/:region/:area/:city' do
-  @indices = PostIndex.where(region: params[:region], area: params[:area], city: params[:city])
+  @indices = PostIndex.where(region_autonom_sql, params[:region], params[:region]).where(area: params[:area], city: params[:city])
   pass unless @indices.any?
   haml :city
 end
