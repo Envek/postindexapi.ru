@@ -4,7 +4,10 @@
   %head
     %meta{charset: 'utf-8'}
     %title API-доступ к почтовым индексам России.
+    %meta{name: 'HandheldFriendly', content: 'true'}
+    %meta{name: 'viewport', content: 'width=device-width; height=device-height; initial-scale=1.0;'}
     %link{rel: 'stylesheet', href: '/stylesheet.css'}
+    %link{rel: 'author', href: 'http://envek.name/'}
     %link{rel: 'icon', type: 'image/png', href: url('/favicon.png')}
     %meta{name: :keyword, content: 'Почтовый индекс, почтовые индексы, JSON, API'}
     %script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'}
@@ -16,10 +19,11 @@
         %section#main
           %nav.breadcrumbs= breadcrumbs
           = yield
-        %menu#regions
+        #regions
           %h2 По регионам
-          - [PostIndex.reorder(nil).uniq.pluck(:region).reject{|r| r.empty?}.to_a + PostIndex.where(region: '').reorder(nil).uniq.pluck(:autonom).reject{|r| r.empty?}.to_a].flatten.sort.each do |region|
-            %li <a href="#{to "/#{region}"}">#{region}</a>
+          %menu
+            - [PostIndex.reorder(nil).uniq.pluck(:region).reject{|r| r.empty?}.to_a + PostIndex.where(region: '').reorder(nil).uniq.pluck(:autonom).reject{|r| r.empty?}.to_a].flatten.sort.each do |region|
+              %li <a href="#{to "/#{region}"}">#{region}</a>
         .google_adsense= erb :adsense if settings.production?
     #footer_wrap
       %footer

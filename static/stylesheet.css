@@ -43,7 +43,7 @@ header {
   background: #0c426f;
   color: white;
   border-bottom: 1px solid #09355a;
-  padding: 1em 10%;
+  padding: 1em 2em;
   margin: -1em -20em 1em -2em; }
   header h1 span {
     display: block;
@@ -92,14 +92,14 @@ section#main {
   width: 100%;
   float: left; }
 
-menu#regions {
+#regions {
   width: 15em;
   margin-right: -18em;
   margin-top: 0;
   float: right; }
-  menu#regions li {
+  #regions menu li {
     font-size: 80%; }
-  menu#regions h2 {
+  #regions h2 {
     margin-top: 0; }
 
 .breadcrumbs {
@@ -191,3 +191,36 @@ pre.code {
 @media(min-width: 500px) { .google_adsense .postindexapi-main { width: 468px; height: 60px; } }
 @media(min-width: 1000px) { .google_adsense .postindexapi-main { width: 728px; height: 90px; } }
 @media(min-width: 1250px) { .google_adsense .postindexapi-main { width: 970px; height: 90px; } }
+
+/* Be Responsive */
+@media only screen and (max-width: 768px),
+only screen and (max-device-width: 768px) {
+    #wrap_inner {
+        padding: 1em 1em 200px;
+        overflow: hidden; }
+
+    header {
+        margin: -1em -1em 1em;
+    }
+
+    section#main {
+        width: auto;
+        float: none; }
+
+    #regions {
+        width: auto;
+        margin-right: 0;
+        float: none; }
+    #regions menu {
+        padding-left: 0.5em;
+        -webkit-columns: 20em auto;
+        -moz-columns: 20em auto;
+        columns: 20em auto; }
+    #regions menu li {
+        font-size: 100%; }
+
+    #footer_wrap {
+        height: 175px;
+        margin-top: -176px; }
+
+}
