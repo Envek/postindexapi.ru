@@ -4,6 +4,7 @@ require 'sinatra/respond_to'
 require 'sinatra/cookies'
 require 'securerandom'
 require 'yajl/json_gem'
+require 'newrelic_rpm'
 Sinatra::Application.register Sinatra::RespondTo
 set :app, HashWithIndifferentAccess.new(YAML.load_file('config/settings.yml'))
 set :haml, :format => :html5

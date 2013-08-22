@@ -20,6 +20,7 @@ gem 'therubyracer'
 
 gem 'nokogiri', require: false
 gem 'rack-google-analytics'
+gem 'newrelic_rpm'
 gem 'sucker_punch', '~> 1.0'
 gem 'rest-client'
 gem 'whenever', :require => false
