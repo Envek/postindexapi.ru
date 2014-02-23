@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/respond_to'
@@ -127,6 +128,7 @@ helpers do
     str = parts.map{|p| "<a href='#{to(p)}'>#{URI.unescape(p.split('/').last)}</a>"}.join(' / ')
     root_link = request.path_info == '/' ? '' : "<a href='#{to('/')}'>Начало</a>"
     bary = [root_link, str, URI.unescape(request.path_info.split('/').last||'')]
+    bary.each {|s| puts s.force_encoding('utf-8') }
     bary.reject {|s| s.blank? }.flatten.join(' / ')
   end
 end
