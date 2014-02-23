@@ -55,7 +55,12 @@ end
 not_found do
   respond_to do |format|
     format.html { haml "%h1 Ничего не найдено\n%p Возможно вы опечатались в адресе…" }
-    format.json { yajl "json = { error_message: 'Запрошенный вами ресурс не существует'}" }
+    format.json do
+      headers \
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => 'GET'
+      yajl "json = { error_message: 'Запрошенный вами ресурс не существует'}"
+    end
   end
 end
 
