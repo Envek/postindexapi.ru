@@ -43,7 +43,8 @@ get %r{/(\d{6})} do |index|
         'Access-Control-Allow-Origin' => '*',
         'Access-Control-Allow-Methods' => 'GET'
       last_modified @index.act_date
-      yajl :post_index, callback: params[:callback]
+      content_type :js  if params[:callback].present?
+      yajl :post_index, callback: params[:callback].presence
     end
   end
 end
@@ -59,7 +60,8 @@ not_found do
       headers \
         'Access-Control-Allow-Origin' => '*',
         'Access-Control-Allow-Methods' => 'GET'
-      yajl "json = { error_message: 'Запрошенный вами ресурс не существует'}"
+      content_type :js  if params[:callback].present?
+      yajl "json = { error_message: 'Запрошенный вами ресурс не существует'}", callback: params[:callback].presence
     end
   end
 end
