@@ -121,7 +121,6 @@ get '/:region/:autonom/:area' do
 end
 
 get '/:region/:autonom/:area/:city' do
-  puts params.reject{|k,v| ![:region,:autonom,:area,:city].include?(k)}
   @indices = PostIndex.where(region: params[:region], autonom: params[:autonom], area: params[:area], city: params[:city])
   raise Sinatra::NotFound unless @indices.any?
   haml :city
@@ -137,7 +136,7 @@ helpers do
     str = parts.map{|p| "<a href='#{to(p)}'>#{URI.unescape(p.split('/').last)}</a>"}.join(' / ')
     root_link = request.path_info == '/' ? '' : "<a href='#{to('/')}'>Начало</a>"
     bary = [root_link, str, URI.unescape(request.path_info.split('/').last||'')]
-    bary.each {|s| puts s.force_encoding('utf-8') }
+    bary.each {|s| s.force_encoding('utf-8') }
     bary.reject {|s| s.blank? }.flatten.join(' / ')
   end
 end
