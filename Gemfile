@@ -7,7 +7,7 @@ gem 'rake'
 gem 'puma'
 
 # Database
-gem 'sinatra-activerecord', '~> 1.2'
+gem 'sinatra-activerecord'
 gem 'activerecord', '~> 4.0'
 gem 'pg'
 
@@ -26,7 +26,6 @@ gem 'rest-client'
 gem 'whenever', :require => false
 
 group :development do
-  gem 'debugger'
   gem 'shotgun'
   gem 'tux'
   gem 'capistrano'

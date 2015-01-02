@@ -1,9 +1,11 @@
 # encoding: utf-8
+require 'sucker_punch' # Should be before sinatra, see https://github.com/brandonhilkert/sucker_punch/issues/64
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/respond_to'
 require 'sinatra/cookies'
 require 'securerandom'
+require 'haml'
 require 'yajl/json_gem'
 require 'newrelic_rpm'
 Sinatra::Application.register Sinatra::RespondTo
