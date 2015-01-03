@@ -17,7 +17,7 @@ jQuery(document).ready(function($){
     if (postcode.length == 6) {
       jQuery.ajax({ 
         dataType: "jsonp",
-        url: 'http://postindexapi.ru/'+postcode+'.json?callback=?',
+        url: '//postindexapi.ru/'+postcode+'.json?callback=?',
         beforeSend: function() { // Уведомим пользователя, что загрузка идёт
           $("td:last-child p.description.notice, td:last-child p.description.alert", postcode_field.parents("tr")).remove();
           $('<p class="description notice loading"></p>').text("Загрузка…").appendTo($("td:last-child", postcode_field.parents("tr")))

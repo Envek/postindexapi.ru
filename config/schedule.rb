@@ -2,8 +2,8 @@
 env :PATH, ENV['PATH']
 
 app = 'postindexapi'
-ruby = '2.0.0'
-deploy_to  = "/srv/#{app}"
+ruby = '2.2.0'
+deploy_to  = "/home/piapi/#{app}"
 current = "#{deploy_to}/current"
 puma_sockets = "#{deploy_to}/shared/sockets"
 puma_statefile = "#{puma_sockets}/puma.state"

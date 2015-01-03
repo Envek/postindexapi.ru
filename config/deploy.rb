@@ -8,11 +8,11 @@ set :scm, :git
 set :repository, 'git@github.com:Envek/postindexapi.ru.git'
 set :branch, 'master'
 set :deploy_via, :remote_cache
-set :deploy_to, "/srv/#{application}"
+set :deploy_to, "/home/piapi/#{application}"
 
 server domain, :app, :web, :db, primary: true
 
-set :rvm_ruby_string, '2.0.0'
+set :rvm_ruby_string, '2.2.0'
 set :rvm_type, :user
 set :use_sudo, false
 require 'rvm/capistrano'

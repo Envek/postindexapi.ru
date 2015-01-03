@@ -7,6 +7,13 @@ JSON API доступа к почтовым индексам Почты Росс
 
 URL: http://postindexapi.ru
 
+Зависимости:
+
+ * Ruby
+ * Sinatra
+ * PostgreSQL
+ * pgdbf
+
 Разработка
 ----------
 
@@ -17,8 +24,9 @@ URL: http://postindexapi.ru
   3. Скопируйте файлы `config/*.yml.sample` в `config/*.yml` и отредактируйте под себя;
   4. Создайте учётную запись в PostgreSQL;
   5. Разверните бэкап БД или установите новую: `rake db:schema:load`;
-  6. Скачайте актуальную базу почтовых индексов: `rake post_index:update`
-  7. Работайте!
+  6. Установите утилиту `pgdbf` для следующего шага;
+  7. Скачайте актуальную базу почтовых индексов: `rake post_index:update`;
+  8. Работайте!
 
 ### Помощь в разработке
 
@@ -40,9 +48,13 @@ URL: http://postindexapi.ru
 
 ### Первое развёртывание
 ```
+# Установите на сервере следующие пакеты: git pgdbf unzip postgresql postgresql-client libpq-dev wget ca-certificates g++ gcc make libc6-dev libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev
+cap rvm:install_rvm
+cap rvm:install_ruby
 cap deploy:setup
 cap deploy:update
-# Отредактируйте settings.yml и database.yml, создайте пользователя и БД
+# Отредактируйте на сервере settings.yml и database.yml, создайте пользователя и БД
+# Выполните на сервере rake db:setup post_index:update
 cap deploy
 ```
 
@@ -56,7 +68,7 @@ cap deploy
 
 Данное программное обеспечение распространяется на условиях лицензии [MIT]:
 
-> Copyright © 2013 Новиков Андрей Александрович
+> Copyright © 2013-2015 Новиков Андрей Александрович
 >
 > Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, добавление, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, также как и лицам, которым предоставляется данное Программное Обеспечение, при соблюдении следующих условий:
 >
