@@ -19,13 +19,14 @@ class AnalyticsJob
       dh: request.host,                           # Hostname
       dp: request.path,                           # Document page address
       qt: ((::Time.now - timestamp)*1000).to_i,   # Queue time delta (ms)
+      uip: request.ip,                            # Client IP address
+      ua:  request.user_agent,                    # Client browser
       z: (rand*1000000000000).to_i                # Cache buster (just random number)
     }
 
     ::RestClient.get(
         'http://www.google-analytics.com/collect',
         params: params, timeout: 5, open_timeout: 5,
-        user_agent: request.user_agent
     )
   end
 end
