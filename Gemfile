@@ -26,6 +26,7 @@ gem 'rest-client'
 gem 'whenever', :require => false
 
 group :development do
+  gem 'foreman'
   gem 'shotgun'
   gem 'tux'
   gem 'capistrano'

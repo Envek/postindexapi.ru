@@ -1,0 +1,10 @@
+config:
+  database: postgresql
+project:
+  after:
+    - apt-get -y install unzip pgdbf
+stage:
+  database:
+    - bundle exec rake post_index:update
+  before:
+    - cp config/settings.yml.example config/settings.yml
