@@ -8,6 +8,7 @@ require 'securerandom'
 require 'haml'
 require 'yajl/json_gem'
 require 'newrelic_rpm'
+require 'rack-google-analytics'
 Sinatra::Application.register Sinatra::RespondTo
 set :app, HashWithIndifferentAccess.new(YAML.load_file('config/settings.yml'))
 set :haml, :format => :html5
