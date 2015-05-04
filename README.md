@@ -48,7 +48,7 @@ URL: http://postindexapi.ru
 
 ### Первое развёртывание
 ```
-# Установите на сервере следующие пакеты: git pgdbf unzip postgresql postgresql-client libpq-dev wget ca-certificates g++ gcc make libc6-dev libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev
+# Установите на сервере следующие пакеты: git pgdbf unzip postgresql postgresql-client libpq-dev wget ca-certificates g++ gcc make libc6-dev libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev gawk
 cap rvm:install_rvm
 cap rvm:install_ruby
 cap deploy:setup
