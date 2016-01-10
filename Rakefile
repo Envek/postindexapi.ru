@@ -9,7 +9,7 @@ namespace :post_index do
   desc 'Update used post indices database to latest'
   task :update do
     # Get info about post indices database
-    url_prefix = 'http://info.russianpost.ru/database'
+    url_prefix = 'http://vinfo.russianpost.ru/database'
     doc  = Nokogiri::HTML(open("#{url_prefix}/ops.html"))
     file = doc.at_css('a[name=newdbdata]+table tr:last-child td:nth-child(4) a').attr :href
     FileUtils.mkdir_p "#{settings.root}/tmp/post_indices"

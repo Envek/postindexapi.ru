@@ -12,7 +12,7 @@ set :deploy_to, "/home/piapi/#{application}"
 
 server domain, :app, :web, :db, primary: true
 
-set :rvm_ruby_string, '2.2'
+set :rvm_ruby_string, '2.3'
 set :rvm_type, :user
 set :use_sudo, false
 require 'rvm/capistrano'
