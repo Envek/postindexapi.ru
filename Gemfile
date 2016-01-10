@@ -29,6 +29,6 @@ group :development do
   gem 'foreman'
   gem 'shotgun'
   gem 'tux'
-  gem 'capistrano'
+  gem 'capistrano', '~> 2.15'
   gem 'rvm-capistrano'
 end
