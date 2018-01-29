@@ -22,9 +22,9 @@ namespace :post_index do
       # Download, unzip, rename and convert post indices file
       sh "wget --continue #{url_prefix}/#{file} -O #{filepath}"
       sh "unzip -o #{filepath} -d #{dir}"
-      dbf_filename = filepath.to_s.gsub /\.zip$/, '.DBF'
+      dbf_filename = filepath.to_s.gsub /\.zip$/, '.dbf'
       sh "cp -f #{dbf_filename} #{dir}/post_indices.dbf"
-      sh "pgdbf -u #{dir}/post_indices.dbf | iconv -f CP866 > #{dir}/post_indices.sql"
+      sh "pgdbf -u #{dir}/post_indices.dbf | iconv -f CP866 -t utf-8 > #{dir}/post_indices.sql"
       # Import in database
       config = YAML.load_file("#{settings.root}/config/database.yml")[settings.environment.to_s]
       dbh, dbu, dbp, db = config['host'], config['username'], config['password'], config['database']
